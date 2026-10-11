@@ -8,8 +8,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 OUT_DIR = os.path.join(ROOT, 'visualizations')
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# ---- rebuild the cleaned, merged data from the raw CSVs (same steps as clean_and_eda.py) ----
-orders = pd.read_csv(os.path.join(ROOT, 'data', 'orders.csv'))
+# rebuild the cleaned, merged data from the raw CSVs (same steps as clean_and_eda.py)
 customers = pd.read_csv(os.path.join(ROOT, 'data', 'customers.csv'))
 products = pd.read_csv(os.path.join(ROOT, 'data', 'products.csv'))
 
@@ -30,7 +29,7 @@ iqr = q3 - q1
 merged['is_outlier'] = (merged['quantity'] < q1 - 1.5 * iqr) | (merged['quantity'] > q3 + 1.5 * iqr)
 
 
-# ---- Chart 1: return rate by payment method ----
+# Chart 1: return rate by payment method
 rates = (merged.groupby('payment_method')['returned'].mean() * 100).round(1)
 rates = rates.sort_values(ascending=False)
 
@@ -55,7 +54,7 @@ plt.close(fig)
 print("Saved visualizations/return_rate_by_payment.png")
 
 
-# ---- Chart 2: outlier-corrected monthly revenue ----
+# Chart 2: outlier-corrected monthly revenue
 merged['year_month'] = pd.to_datetime(merged['order_date']).dt.strftime('%Y-%m')
 monthly = merged[~merged['is_outlier']].groupby('year_month')['order_value'].sum().round(2)
 
