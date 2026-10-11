@@ -1,0 +1,10 @@
+# source: offline template (no live Gemini call)
+
+SITUATION
+After cleaning the order data, total revenue stands at Rs 97,358.30. The raw figure was Rs 99,860.20; the Rs 2,501.90 difference comes entirely from duplicate orders caused by a double-submit bug, not from any real loss of sales. March 2026 is the genuine peak month at Rs 20,318.90.
+
+COMPLICATION
+Returns are not spread evenly. Cash on delivery orders are returned at 44.4%, against 18.9% for UPI and 14.7% for card. The problem is concentrated further: COD orders in Tier-2 cities are returned at 54.5%, the highest of any segment. The revenue trend also misleads at first glance: January 2026 appears to lead at Rs 29,582.10, but that is inflated by two bulk orders and falls to Rs 11,637.10 once they are excluded.
+
+RESOLUTION
+Ops should target COD orders in Tier-2 cities first, for example with order confirmation calls, or by nudging those customers toward prepaid payment. Finance should report revenue on the de-duplicated base of Rs 97,358.30, flag bulk orders separately so they do not distort monthly trends, and plan inventory and campaigns around March 2026 as the real peak.
